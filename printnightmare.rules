@@ -1,0 +1,19 @@
+alert tcp any 445 -> any any \
+(msg:"Posible printnighmare exploitation1"; \
+dsize:>4000; \
+reference: cve, CVE-2021-34527; \
+classtype:trojan-activity; sid: 1;)
+
+alert tcp any 445 -> any any \
+(msg:"Posible printnighmare exploitation2"; \
+dsize:>4000; \
+reference: cve, CVE-2021-34527; \
+classtype:trojan-activity; \
+content:"|54 68 69 73 20 70 72 6f 67 72 61 6d 20|"; sid: 2;)
+
+alert tcp any 445 -> any any \
+(msg:"Posible printnighmare exploitation3"; \
+dsize:>4000; \
+reference: cve, CVE-2021-34527; \
+classtype:trojan-activity; \
+content:"|43 6c 6f 73 65 48 61 6e 64 6c 65|"; sid: 3;)
