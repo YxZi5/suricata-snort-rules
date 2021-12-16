@@ -1,0 +1,30 @@
+alert icmp any any -> any any \
+(msg:"Pingback C2 command - upload"; icode:0; \
+content:"upload"; conase; depth:6; content:"|00 00 00|"; within:5; \
+reference:url,www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/backdoor-at-the-end-of-the-icmp-tunnel; \
+reference:url,corelight.blog/2021/05/07/pingback-icmp-tunneling-malware; \
+classtype:trojan-activity; sid:3000000)
+
+alert icmp any any -> any any \
+(msg:"Pingback C2 command - download"; \
+content:"download"; nocase; depth:8; \
+content:"|00 00 00|"; within:5; \
+reference:url,www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/backdoor-at-the-end-of-the-icmp-tunnel/; \
+reference:url,corelight.blog/2021/05/07/pingback-icmp-tunneling-malware/; \
+classtype:trojan-activity; sid:3000001;)
+
+alert icmp any any -> any any \
+(msg:"Pingback C2 command - shell"; \
+content:"shell"; nocase; depth:5; \
+content:"|00 00 00|"; within:5; \
+reference:url,www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/backdoor-at-the-end-of-the-icmp-tunnel/; \
+reference:url,corelight.blog/2021/05/07/pingback-icmp-tunneling-malware/; \
+classtype:trojan-activity; sid:3000002;)
+
+alert icmp any any -> any any \
+(msg:"Pingback C2 command - rexec"; \
+content:"rexec"; nocase; depth:5; \
+content:"|00 00 00|"; within:5; \
+reference:url,www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/backdoor-at-the-end-of-the-icmp-tunnel/; \
+reference:url,corelight.blog/2021/05/07/pingback-icmp-tunneling-malware/; \
+classtype:trojan-activity; sid:3000003;) 
