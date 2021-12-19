@@ -1,0 +1,23 @@
+alert tcp any any -> any any \
+(msg:"Posible Log4j exploitation"; \
+reference: cve, CVE-2021-44228; \
+classtype:trojan-activity; \
+content:"|7b 6a 6e 64 69 3a 6c 64 61 70 3a 2f 2f|"; sid: 1;) 
+
+alert tcp any 80 -> any any \
+(msg:"Posible Log4j exploitation"; \
+reference: cve, CVE-2021-44228; \
+classtype:trojan-activity; \
+content:"|7b 6a 6e 64 69 3a 6c 64 61 70 3a 2f 2f|"; sid: 2;)
+
+alert tcp any 8000 -> any any \
+(msg:"Posible Log4j exploitation"; \
+reference: cve, CVE-2021-44228; \
+classtype:trojan-activity; \
+content:"|7b 6a 6e 64 69 3a 6c 64 61 70 3a 2f 2f|"; sid: 3;)
+
+alert tcp any any -> any any \
+(msg:"Posible Log4j exploitation"; \
+reference: cve, CVE-2021-44228; \
+classtype:trojan-activity; \
+content:"|3a 31 33 38 39 2f|"; sid: 4;)
