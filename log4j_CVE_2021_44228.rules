@@ -29,3 +29,19 @@ classtype:web-application-attack; \
 reference:url, www.cisecurity.org/log4j-zero-day-vulnerability-response/; \
 content:"|3a 31 33 38 39 2f|"; nocase; sid: 4; \
 updated_at 2021_01_01;)
+
+alert http any any -> any any \
+(msg:"ET EXPLOIT Apache log4j RCE Attempt"; \
+reference: cve, CVE-2021-44228; \
+classtype:web-application-attack; \
+reference: url, www.cisecurity.org/log4j-zero-day-vulnerability-response/; \
+content:"|24 7b|jndi|3a|ldap|3a 2f 2f|"; nocase; \
+sid:5;)
+
+alert tcp any any -> any any \
+(msg:"ET EXPLOIT Apache log4j RCE Attempt"; \
+reference: cve, CVE-2021-44228; \
+classtype:web-application-attack; \
+reference: url, www.cisecurity.org/log4j-zero-day-vulnerability-response/; \
+content:"|24 7b|jndi|3a|ldap|3a 2f 2f|"; nocase; \
+sid:5;)
